@@ -1,6 +1,7 @@
 import tkinter as tk
+import re
 from tkinter.font import BOLD
-from tkinter.tix import COLUMN
+import time
 
 ### ### Configs ### ###
 
@@ -39,6 +40,11 @@ bd=5,
 pady=15,
 padx=25
 ); Frame.pack(pady=20)
+
+# Variable Declaration #
+SID_var=tk.StringVar()
+Name_var=tk.StringVar()
+Dict = {"Name": "", "SID":"", "Score":0}
 
 ### ### Main Menu ### ###
 
@@ -81,15 +87,17 @@ def main_menu():
     relief=tk.SUNKEN,
     bd=6,
     fg=etc,
-    bg="Ivory"
+    bg="Ivory",
+    textvariable=Name_var
     ); entName.grid(row=2, column=0, pady=10)
-
+    
     entSID = tk.Entry(Frame,
     font=efont,
     relief=tk.SUNKEN,
     bd=6,
     fg=etc,
-    bg="Ivory"
+    bg="Ivory",
+    textvariable=SID_var
     ); entSID.grid(row=2, column=1, pady=10)
 
     btnSubmit = tk.Button(Frame,
@@ -102,7 +110,8 @@ def main_menu():
     fg=tc,
     bg=tbc,
     activeforeground=tbc,
-    activebackground=bgc
+    activebackground=bgc,
+    command=lambda:btnSubmitCMD()
     ); btnSubmit.grid(row=3, column=0, columnspan=2, pady=20)
 
     lblStatus = tk.Label(Frame,
@@ -116,11 +125,51 @@ def main_menu():
     bg=tbc
     ); lblStatus.grid(row=4, column=0, columnspan=2, pady=10)
 
+    # Handles the submit button click
+    def btnSubmitCMD():
+        NameCheck = check_Name()
+        SIDCheck = check_SID()
+        if NameCheck and SIDCheck:
+            lblStatus.config(text=Dict["Name"] + " : " + Dict["SID"])
+            time.sleep(2)
+            question_manager()
+
+    # Checks the validity of the inputted name
+    def check_Name():
+        Name=Name_var.get().upper()
+        if len(Name) < 3:
+            lblStatus.config(text="Name is too short!")
+            return False
+        IsValid = bool(re.match("^[A-Za-z- ]*$", Name))
+        if not IsValid:
+            lblStatus.config(text="Invalid Characters in Name!")
+            return False
+        Dict["Name"]=Name
+        return True
+
+    # Checks the validity of the inputted SID
+    def check_SID():
+        SID=SID_var.get()
+        try:
+            SID_Length = len(SID)
+            SID=int(SID)
+        except:
+            lblStatus.config(text="SID is not an integer!")
+            return False
+        if SID_Length != 8:
+            lblStatus.config(text="SID is not 8 digits!")
+            return False
+        Dict["SID"]=str(SID)
+        return True
 main_menu()
 
 ### ### Questions ### ###
 
-# Testing question layout #
+def question_manager():
+    pass
+
+# Multiple Choice Questions #
+
 def test_multichoice_question():
     lblQuestion = tk.Label(Frame,
     text="Which option is B?",
@@ -219,14 +268,16 @@ def test_multichoice_question():
     ); lblScore.grid(row=3, column=1)
 #test_multichoice_question()
 
-# Multiple Choice Questions #
-
-
 # Fill in the Blnak Questions #
 
+def test_FIB_question():
+    pass
+#test_FIB_question()
 
 # Rank in Order Questions #
 
-
+def test_RIO_question():
+    pass
+#test_RIO_question()
 
 root.mainloop()
