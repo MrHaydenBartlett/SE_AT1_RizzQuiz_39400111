@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3b403529-73a4-4864-816e-5d82cde47e21</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>SE_AT1_RizzQuiz_39400111.py</StartupFile>
+    <StartupFile>Main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,8 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Config_Record.py" />
     <Compile Include="Quiz.py" />
-    <Compile Include="SE_AT1_RizzQuiz_39400111.py" />
+    <Compile Include="Main.py" />
     <Compile Include="Window.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

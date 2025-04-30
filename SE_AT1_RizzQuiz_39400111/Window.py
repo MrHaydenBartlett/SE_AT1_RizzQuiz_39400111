@@ -1,26 +1,18 @@
 import tkinter as tk
-from tkinter.font import BOLD
+import Config_Record as cnfg
 
-### ### Configs ### ###
+#### ### Configs ### ###
 
-# Background Colour
-bgc="Salmon3"
-# Foreground Colour
-fgc="LightSalmon2"
-# Active Background Colour
-abgc="Salmon"
-# Active Foreground Colour
-afgc="LightSalmon"
-# Text Colour
-tc="Salmon4"
-# Text Background Colour
-tbc="LightSalmon"
-# Entry Text Colour
-etc="gray4"
-# Font
-font=("Courier New", 18, BOLD)
-# Entry Font
-efont=("Courier New", 14, BOLD)
+bgc = cnfg.Configs().bgc
+fgc = cnfg.Configs().fgc
+abgc = cnfg.Configs().abgc
+afgc = cnfg.Configs().afgc
+tc = cnfg.Configs().tc
+tbc = cnfg.Configs().tbc
+ebg = cnfg.Configs().ebg
+etc = cnfg.Configs().etc
+font = cnfg.Configs().font
+efont = cnfg.Configs().efont
 
 # Root Creation & Customisation #
 def window():

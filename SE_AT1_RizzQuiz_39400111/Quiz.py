@@ -1,29 +1,21 @@
-import string
 import tkinter as tk
 from tkinter.font import BOLD
 import Window as win
 from tkinter import ttk
+import Config_Record as cnfg
 
-### ### Configs ### ###
+#### ### Configs ### ###
 
-# Background Colour
-bgc="Salmon3"
-# Foreground Colour
-fgc="LightSalmon2"
-# Active Background Colour
-abgc="Salmon"
-# Active Foreground Colour
-afgc="LightSalmon"
-# Text Colour
-tc="Salmon4"
-# Text Background Colour
-tbc="LightSalmon"
-# Entry Text Colour
-etc="gray4"
-# Font
-font=("Courier New", 18, BOLD)
-# Entry Font
-efont=("Courier New", 14, BOLD)
+bgc = cnfg.Configs().bgc
+fgc = cnfg.Configs().fgc
+abgc = cnfg.Configs().abgc
+afgc = cnfg.Configs().afgc
+tc = cnfg.Configs().tc
+tbc = cnfg.Configs().tbc
+ebg = cnfg.Configs().ebg
+etc = cnfg.Configs().etc
+font = cnfg.Configs().font
+efont = cnfg.Configs().efont
 
 def Quiz(Dict):
     root, Frame = win.window()
@@ -179,7 +171,7 @@ def Quiz(Dict):
         relief=tk.SUNKEN,
         bd=6,
         fg=etc,
-        bg="Ivory",
+        bg=ebg,
         textvariable=string_var
         ); entAnswer.grid(row=2, column=0, columnspan=2, pady=10)
 
@@ -238,8 +230,15 @@ def Quiz(Dict):
         ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=10)
 
         lblOne = tk.Label(Frame,
-        text="1. "
-        ); lblOne.grid(row=1, column=0)
+        text="1.",
+        font=font,
+        relief=tk.SUNKEN,
+        bd=6,
+        padx=5,
+        pady=5,
+        fg=tc,
+        bg=tbc
+        ); lblOne.grid(row=1, column=0, pady=5)
 
         string_var = tk.StringVar()
         cmbOp1 = ttk.Combobox(Frame,
@@ -247,17 +246,32 @@ def Quiz(Dict):
         ); cmbOp1.grid(row=1, column=1)
 
         lblTwo = tk.Label(Frame,
-        text="2. "
-        ); lblTwo.grid(row=2, column=0)
+        text="2.",
+        font=font,
+        relief=tk.SUNKEN,
+        bd=6,
+        padx=5,
+        pady=5,
+        fg=tc,
+        bg=tbc
+        ); lblTwo.grid(row=2, column=0, pady=5)
 
         string_var = tk.StringVar()
         cmbOp2 = ttk.Combobox(Frame,
-        textvariable=string_var
+        textvariable=string_var,
+        values=[rio_op1, rio_op2, rio_op3]
         ); cmbOp2.grid(row=2, column=1)
 
         lblThree = tk.Label(Frame,
-        text="3. "
-        ); lblThree.grid(row=3, column=0)
+        text="3.",
+        font=font,
+        relief=tk.SUNKEN,
+        bd=6,
+        padx=5,
+        pady=5,
+        fg=tc,
+        bg=tbc
+        ); lblThree.grid(row=3, column=0, pady=5)
 
         string_var = tk.StringVar()
         cmbOp3 = ttk.Combobox(Frame,
