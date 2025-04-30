@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter.font import BOLD
 import Window as win
+import time as t
 
 
 ### ### Configs ### ###
@@ -30,15 +31,15 @@ def Quiz(Dict):
     ### ### Questions ### ###
 
     # Multiple Choice Questions #
-    question="Which option is B?"
-    op1="A"
-    op2="B"
-    op3="C"
-    op4="D"
-    answer=2
-    def MC_question():
+    mc_q="Which option is B?"
+    mc_op1="A"
+    mc_op2="B"
+    mc_op3="C"
+    mc_op4="D"
+    mc_a=2
+    def mc_question():
         lblQuestion = tk.Label(Frame,
-        text=question,
+        text=mc_q,
         font=("Courier New", 24, BOLD),
         relief=tk.SUNKEN,
         bd=6,
@@ -46,11 +47,12 @@ def Quiz(Dict):
         pady=5,
         fg=tc,
         bg=tbc
-        ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=50)
+        ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=25)
 
         radio_var = tk.IntVar()
+        radio_var.set(1)
         rbtnOption1 = tk.Radiobutton(Frame,
-        text=op1,
+        text=mc_op1,
         font=font,
         relief=tk.RAISED,
         bd=5,
@@ -65,7 +67,7 @@ def Quiz(Dict):
         ); rbtnOption1.grid(row=1, column=0, pady=5)
 
         rbtnOption2 = tk.Radiobutton(Frame,
-        text=op2,
+        text=mc_op2,
         font=font,
         relief=tk.RAISED,
         bd=5,
@@ -80,7 +82,7 @@ def Quiz(Dict):
         ); rbtnOption2.grid(row=1, column=1, pady=5)
 
         rbtnOption3 = tk.Radiobutton(Frame,
-        text=op3,
+        text=mc_op3,
         font=font,
         relief=tk.RAISED,
         bd=5,
@@ -95,7 +97,7 @@ def Quiz(Dict):
         ); rbtnOption3.grid(row=2, column=0, pady=5)
 
         rbtnOption4 = tk.Radiobutton(Frame,
-        text=op4,
+        text=mc_op4,
         font=font,
         relief=tk.RAISED,
         bd=5,
@@ -119,7 +121,8 @@ def Quiz(Dict):
         fg=tc,
         bg=tbc,
         activeforeground=tbc,
-        activebackground=bgc
+        activebackground=bgc,
+        command=lambda:mc_submit(radio_var)
         ); btnSubmit.grid(row=3, column=0, pady=15)
 
         lblScore = tk.Label(Frame,
@@ -130,18 +133,60 @@ def Quiz(Dict):
         padx=10,
         pady=10,
         fg=tc,
-        bg=tbc,
+        bg=tbc
         ); lblScore.grid(row=3, column=1)
-    MC_question()
+
+    def mc_submit(radio_var):
+        mark=""
+        if mc_a == radio_var.get():
+            Dict["Score"] += 100
+            mark="Correct!"
+        else:
+            mark="Incorrect!"
+        display_mark(mark)
+
+    mc_question()
 
     # Fill in the Blank Questions #
-    def FIB_question():
+    fib_q="fill in the blank"
+    fib_a="blank"
+    def fib_question():
+        lblQuestion = tk.Label(Frame,
+        text=fib_q,
+        font=("Courier New", 24, BOLD),
+        relief=tk.SUNKEN,
+        bd=6,
+        padx=10,
+        pady=5,
+        fg=tc,
+        bg=tbc
+        ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=50)
+
+    def fib_submit():
         pass
     #FIB_question()
 
     # Rank in Order Questions #
-    def RIO_question():
+    rio_q="Rank in order"
+    fib_a=[0,1,2,3,4]
+    def rio_question():
+        pass
+
+    def rio_submit():
         pass
     #RIO_question()
+
+    def display_mark(mark):
+        lblMark = tk.Label(Frame,
+        text=mark,
+        font=font,
+        relief=tk.SUNKEN,
+        bd=6,
+        padx=10,
+        pady=5,
+        fg=tc,
+        bg=tbc
+        ); lblMark.grid(row=4, column=0, columnspan=2)
+        t.sleep(1)
 
     root.mainloop()
