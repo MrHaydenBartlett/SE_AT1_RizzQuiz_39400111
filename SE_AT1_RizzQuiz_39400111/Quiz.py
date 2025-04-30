@@ -1,10 +1,8 @@
-from multiprocessing.connection import answer_challenge
-from re import A
+import string
 import tkinter as tk
 from tkinter.font import BOLD
 import Window as win
-import time as t
-
+from tkinter import ttk
 
 ### ### Configs ### ###
 
@@ -153,7 +151,7 @@ def Quiz(Dict):
     fib_q="Charlton, do your ____!"
     fib_a="Clusters"
     def fib_question():
-        lblQuestion = tk.Label(Frame,
+        lblFIB = tk.Label(Frame,
         text="Fill in the Blank:",
         font=("Courier New", 20, BOLD),
         relief=tk.SUNKEN,
@@ -162,7 +160,7 @@ def Quiz(Dict):
         pady=5,
         fg=tc,
         bg=tbc
-        ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=25)
+        ); lblFIB.grid(row=0, column=0, columnspan=2, pady=25)
 
         lblQuestion = tk.Label(Frame,
         text=fib_q,
@@ -219,17 +217,82 @@ def Quiz(Dict):
             mark="Incorrect!"
         display_mark(mark)
 
-    fib_question()
+    #fib_question()
 
     # Rank in Order Questions #
-    rio_q="Rank in order"
-    rio_a=[0,1,2,3,4]
+    rio_q="Rank in Order:"
+    rio_op1="One"
+    rio_op2="Two"
+    rio_op3="Three"
+    rio_a=[0,1,2]
     def rio_question():
-        pass
+        lblQuestion = tk.Label(Frame,
+        text=rio_q,
+        font=("Courier New", 24, BOLD),
+        relief=tk.SUNKEN,
+        bd=6,
+        padx=10,
+        pady=5,
+        fg=tc,
+        bg=tbc
+        ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=10)
+
+        lblOne = tk.Label(Frame,
+        text="1. "
+        ); lblOne.grid(row=1, column=0)
+
+        string_var = tk.StringVar()
+        cmbOp1 = ttk.Combobox(Frame,
+        textvariable=string_var
+        ); cmbOp1.grid(row=1, column=1)
+
+        lblTwo = tk.Label(Frame,
+        text="2. "
+        ); lblTwo.grid(row=2, column=0)
+
+        string_var = tk.StringVar()
+        cmbOp2 = ttk.Combobox(Frame,
+        textvariable=string_var
+        ); cmbOp2.grid(row=2, column=1)
+
+        lblThree = tk.Label(Frame,
+        text="3. "
+        ); lblThree.grid(row=3, column=0)
+
+        string_var = tk.StringVar()
+        cmbOp3 = ttk.Combobox(Frame,
+        textvariable=string_var
+        ); cmbOp3.grid(row=3, column=1)
+
+        btnSubmit = tk.Button(Frame,
+        text="Submit",
+        font=font,
+        relief=tk.RAISED,
+        bd=5,
+        padx=10,
+        pady=5,
+        fg=tc,
+        bg=tbc,
+        activeforeground=tbc,
+        activebackground=bgc,
+        command=lambda:rio_submit(string_var)
+        ); btnSubmit.grid(row=4, column=0, pady=15)
+
+        lblScore = tk.Label(Frame,
+        text=str(Dict["Score"]//100) + "/30",
+        font=font,
+        relief=tk.SUNKEN,
+        bd=6,
+        padx=10,
+        pady=10,
+        fg=tc,
+        bg=tbc
+        ); lblScore.grid(row=4, column=1)
 
     def rio_submit():
         pass
-    #RIO_question()
+
+    rio_question()
 
     # Displays the mark, adds a delay and moves to the next question
     def display_mark(mark):
