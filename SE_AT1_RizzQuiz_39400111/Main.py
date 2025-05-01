@@ -2,10 +2,9 @@ import tkinter as tk
 import re
 from tkinter.font import BOLD
 import Window as win
-import Quiz as Start
 import Config_Record as cnfg
-import Quiz_Manager as qm
-qm.random_questions()
+import datetime
+import Quiz_Manager as QuizMngr
 
 #### ### Configs ### ###
 
@@ -27,7 +26,8 @@ def main():
     SID_var=tk.StringVar()
     Name_var=tk.StringVar()
     # Score is multiplied by 100 to prevent RAM manipulation
-    Dict = {"Name": "", "SID":"", "Score":0}
+    Dict = {"Name": "", "SID":"", "Score":0, "Date":datetime.datetime.now()}
+    print(datetime.datetime.now())
 
     def main_menu():
         lblTitle = tk.Label(Frame,
@@ -145,7 +145,7 @@ def main():
     # Begins the quiz
     def start_quiz():
         root.destroy()
-        Start.Quiz(Dict)
+        QuizMngr.random_questions(Dict)
 
     root.mainloop()
 
