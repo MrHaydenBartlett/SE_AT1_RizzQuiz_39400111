@@ -21,10 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AMOW.py" />
     <Compile Include="Config_Record.py" />
     <Compile Include="Quiz.py" />
     <Compile Include="Main.py" />
     <Compile Include="Quiz_Manager.py" />
+    <Compile Include="Results.py" />
     <Compile Include="Window.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
