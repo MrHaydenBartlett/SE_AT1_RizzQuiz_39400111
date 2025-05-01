@@ -4,6 +4,8 @@ from tkinter.font import BOLD
 import Window as win
 import Quiz as Start
 import Config_Record as cnfg
+import Quiz_Manager as qm
+qm.random_questions()
 
 #### ### Configs ### ###
 
@@ -24,6 +26,7 @@ def main():
     # Variable Declaration #
     SID_var=tk.StringVar()
     Name_var=tk.StringVar()
+    # Score is multiplied by 100 to prevent RAM manipulation
     Dict = {"Name": "", "SID":"", "Score":0}
 
     def main_menu():

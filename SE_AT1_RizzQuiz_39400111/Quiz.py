@@ -213,10 +213,9 @@ def Quiz(Dict):
 
     # Rank in Order Questions #
     rio_q="Rank in Order:"
-    rio_op1="One"
-    rio_op2="Two"
-    rio_op3="Three"
-    rio_a=[0,1,2]
+    # Using a set for random order
+    rio_ops={"One", "Two", "Three"}
+    rio_a=["One", "Two", "Three"]
     def rio_question():
         lblQuestion = tk.Label(Frame,
         text=rio_q,
@@ -240,9 +239,12 @@ def Quiz(Dict):
         bg=tbc
         ); lblOne.grid(row=1, column=0, pady=5)
 
-        string_var = tk.StringVar()
+        string_var1 = tk.StringVar()
         cmbOp1 = ttk.Combobox(Frame,
-        textvariable=string_var
+        textvariable=string_var1,
+        state="readonly",
+        values=list(rio_ops),
+        font=font
         ); cmbOp1.grid(row=1, column=1)
 
         lblTwo = tk.Label(Frame,
@@ -256,10 +258,12 @@ def Quiz(Dict):
         bg=tbc
         ); lblTwo.grid(row=2, column=0, pady=5)
 
-        string_var = tk.StringVar()
+        string_var2 = tk.StringVar()
         cmbOp2 = ttk.Combobox(Frame,
-        textvariable=string_var,
-        values=[rio_op1, rio_op2, rio_op3]
+        textvariable=string_var2,
+        state="readonly",
+        values=list(rio_ops),
+        font=font
         ); cmbOp2.grid(row=2, column=1)
 
         lblThree = tk.Label(Frame,
@@ -273,9 +277,12 @@ def Quiz(Dict):
         bg=tbc
         ); lblThree.grid(row=3, column=0, pady=5)
 
-        string_var = tk.StringVar()
+        string_var3 = tk.StringVar()
         cmbOp3 = ttk.Combobox(Frame,
-        textvariable=string_var
+        textvariable=string_var3,
+        state="readonly",
+        values=list(rio_ops),
+        font=font
         ); cmbOp3.grid(row=3, column=1)
 
         btnSubmit = tk.Button(Frame,
@@ -289,7 +296,7 @@ def Quiz(Dict):
         bg=tbc,
         activeforeground=tbc,
         activebackground=bgc,
-        command=lambda:rio_submit(string_var)
+        command=lambda:rio_submit(string_var1, string_var2, string_var3)
         ); btnSubmit.grid(row=4, column=0, pady=15)
 
         lblScore = tk.Label(Frame,
@@ -303,8 +310,15 @@ def Quiz(Dict):
         bg=tbc
         ); lblScore.grid(row=4, column=1)
 
-    def rio_submit():
-        pass
+        def rio_submit(var1, var2, var3):
+            mark=""
+            guess = [var1.get(), var2.get(), var3.get()]
+            if guess == rio_a:
+                Dict["Score"] += 100
+                mark="Correct!"
+            else:
+                mark="Incorrect!"
+            display_mark(mark)
 
     rio_question()
 
