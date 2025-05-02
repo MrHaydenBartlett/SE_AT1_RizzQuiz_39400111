@@ -27,6 +27,7 @@
     <Compile Include="Main.py" />
     <Compile Include="Quiz_Manager.py" />
     <Compile Include="Results.py" />
+    <Compile Include="Results_Manager.py" />
     <Compile Include="Window.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

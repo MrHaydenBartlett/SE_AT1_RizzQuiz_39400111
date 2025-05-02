@@ -27,7 +27,7 @@ def results(Dict):
     fg=tc,
     bg=tbc,
     wraplength=550
-    ); lblScore.pack(pady=15)
+    ); lblScore.grid(row=0, column=0, pady=15, padx=10)
 
     lblScorePercent = tk.Label(Frame,
     text=str(Dict["Score"]//38) + "%",
@@ -39,7 +39,7 @@ def results(Dict):
     fg=tc,
     bg=tbc,
     wraplength=550
-    ); lblScorePercent.pack(pady=15)
+    ); lblScorePercent.grid(row=0, column=1, pady=15, padx=10)
 
     lblGrade = tk.Label(Frame,
     text="Grade: " + grade(Dict),
@@ -51,15 +51,56 @@ def results(Dict):
     fg=tc,
     bg=tbc,
     wraplength=550
-    ); lblGrade.pack(pady=15)
+    ); lblGrade.grid(row=1, column=0, columnspan=2, pady=15)
+
+    btnQuit = tk.Button(Frame,
+    text="Quit",
+        font=font,
+        relief=tk.RAISED,
+        bd=5,
+        padx=10,
+        pady=5,
+        fg=tc,
+        bg=tbc,
+        activeforeground=tbc,
+        activebackground=bgc,
+        command=lambda:quit_app(root)
+    ); btnQuit.grid(row=2, column=0, pady=15, padx=10)
+
+    btnRetry = tk.Button(Frame,
+    text="Retry",
+        font=font,
+        relief=tk.RAISED,
+        bd=5,
+        padx=10,
+        pady=5,
+        fg=tc,
+        bg=tbc,
+        activeforeground=tbc,
+        activebackground=bgc,
+        command=lambda:retry(root)
+    ); btnRetry.grid(row=2, column=1, pady=15, padx=10)
 
     root.mainloop()
 
 def grade(Dict):
     percent = Dict["Score"]//38
-    if percent > 100:
+    if percent == 100:
+        return "J"
+    elif percent > 80:
+        return "A"
+    elif percent > 60:
+        return "Y"
+    elif percent > 40:
+        return "D"
+    elif percent > 20:
+        return "E"
+    else:
+        return "N"
 
+def quit_app(root):
+    root.destroy()
 
-def menu(root):
+def retry(root):
     root.destroy()
     Main.main()
