@@ -1,5 +1,6 @@
 import random
 import Quiz
+import AMOW
 
 # Multichoice Questions
 # Type > Difficulty > Question > Options > Answer
@@ -32,8 +33,9 @@ def random_questions(Dict):
     questions = [mc1, mc2, mc3,mc4 , mc5, mc6, mc7, mc8, mc9, mc10,
                  fib1, fib2, fib3, fib4, fib5,
                  rio1, rio2, rio3, rio4, rio5]
-    while len(questions) > 0:
-        questions = run_quiz(Dict, questions)
+    #while len(questions) > 0:
+    #    questions = run_quiz(Dict, questions)
+    AMOW.amow(Dict)
 
 def run_quiz(Dict, questions):
     sample = random.sample(questions, 1)
