@@ -2,6 +2,7 @@ import Window as win
 import tkinter as tk
 import Config_Record as cnfg
 import Main
+import Results_Manager as rm
 
 bgc = cnfg.Configs().bgc
 fgc = cnfg.Configs().fgc
@@ -80,6 +81,8 @@ def results(Dict):
         activebackground=bgc,
         command=lambda:retry(root)
     ); btnRetry.grid(row=2, column=1, pady=15, padx=10)
+
+    rm.AddResults(Dict)
 
     root.mainloop()
 

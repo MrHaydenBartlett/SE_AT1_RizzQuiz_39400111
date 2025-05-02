@@ -1,16 +1,15 @@
-
+filepath = "../Task1_Results.txt"
 
 def AddResults(Dict):
-    pass
+    CreateFile(filepath)
+    WriteToFile(Dict, filepath)
 
-def CheckFile():
-    pass
+def CreateFile(filepath):
+    try:
+        f = open(filepath, "x")
+    except:
+        pass
 
-def CreateFile():
-    pass
-
-def ReadFile():
-    pass
-
-def WriteToFile(Dict):
-    pass
+def WriteToFile(Dict, filepath):
+    with open(filepath, "a") as f:
+        f.write(str(Dict))

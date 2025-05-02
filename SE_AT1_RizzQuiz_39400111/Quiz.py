@@ -108,7 +108,7 @@ def mc_question(Dict, question):
     bg=tbc,
     activeforeground=tbc,
     activebackground=bgc,
-    command=lambda:mc_submit(radio_var)
+    command=lambda:mc_submit(radio_var, btnSubmit)
     ); btnSubmit.grid(row=3, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
@@ -122,14 +122,14 @@ def mc_question(Dict, question):
     bg=tbc
     ); lblScore.grid(row=3, column=1)
 
-    def mc_submit(radio_var):
+    def mc_submit(radio_var, btnSubmit):
         mark=""
         if question[7] == radio_var.get():
             Dict["Score"] += 100*question[1]
             mark="Correct!"
         else:
             mark="Incorrect!"
-        display_mark(mark, Frame, root)
+        display_mark(mark, Frame, root, btnSubmit)
 
     root.mainloop()
 
@@ -181,7 +181,7 @@ def fib_question(Dict, question):
     bg=tbc,
     activeforeground=tbc,
     activebackground=bgc,
-    command=lambda:fib_submit(string_var)
+    command=lambda:fib_submit(string_var, btnSubmit)
     ); btnSubmit.grid(row=3, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
@@ -195,14 +195,14 @@ def fib_question(Dict, question):
     bg=tbc
     ); lblScore.grid(row=3, column=1)
 
-    def fib_submit(string_var):
+    def fib_submit(string_var, btnSubmit):
         mark=""
         if question[3].upper() == string_var.get().upper():
             Dict["Score"] += 100*question[1]
             mark="Correct!"
         else:
             mark="Incorrect!"
-        display_mark(mark, Frame, root)
+        display_mark(mark, Frame, root, btnSubmit)
 
     root.mainloop()
 
@@ -290,7 +290,7 @@ def rio_question(Dict, question):
     bg=tbc,
     activeforeground=tbc,
     activebackground=bgc,
-    command=lambda:rio_submit(string_var1, string_var2, string_var3)
+    command=lambda:rio_submit(string_var1, string_var2, string_var3, btnSubmit)
     ); btnSubmit.grid(row=4, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
@@ -304,7 +304,7 @@ def rio_question(Dict, question):
     bg=tbc
     ); lblScore.grid(row=4, column=1)
 
-    def rio_submit(var1, var2, var3):
+    def rio_submit(var1, var2, var3, btnSubmit):
         mark=""
         guess = [var1.get(), var2.get(), var3.get()]
         if guess == question[3]:
@@ -312,12 +312,12 @@ def rio_question(Dict, question):
             mark="Correct!"
         else:
             mark="Incorrect!"
-        display_mark(mark, Frame, root)
+        display_mark(mark, Frame, root, btnSubmit)
 
     root.mainloop()
 
 # Displays the mark, adds a delay and moves to the next question
-def display_mark(mark, Frame, root):
+def display_mark(mark, Frame, root, btnSubmit):
     lblMark = tk.Label(Frame,
     text=mark,
     font=font,
@@ -342,6 +342,8 @@ def display_mark(mark, Frame, root):
     activebackground=bgc,
     command=lambda:btnnextcmd(root)
     ); btnNext.grid(row=5, column=1)
+
+    btnSubmit.config(state="disabled")
 
 def btnnextcmd(root):
     root.destroy()

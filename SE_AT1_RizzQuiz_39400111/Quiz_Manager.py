@@ -13,7 +13,7 @@ mc6 = ["MC", 2, "Which error doesn't throw an error message?", "Syntax", "Import
 mc7 = ["MC", 2, "Which of the following isn't hexadecimal?", "10", "3h", "ff", "a0", 2]
 mc8 = ["MC", 2, "Which is not a software development approach?", "Zip", "Waterfall", "Agile", "Rad", 1]
 mc9 = ["MC", 1, "Which data type can hold the largest number?", "Int", "Float", "Double", "Binary Tree", 3]
-mc10 = ["MC", 1, "Which is the correct value of this two's comp binary: 1100?", "192", "-192", "64", "-64", 4]
+mc10 = ["MC", 1, "Which is the correct value of this two's comp binary: 1100?", "24", "-24", "8", "-8", 4]
 # Fill in the Blank Questions
 # Type > Difficulty > Question > Answer
 fib1 = ["FIB", 3, "A _____ is a data type that follows LIFO.", "Stack"]
@@ -33,8 +33,8 @@ def random_questions(Dict):
     questions = [mc1, mc2, mc3,mc4 , mc5, mc6, mc7, mc8, mc9, mc10,
                  fib1, fib2, fib3, fib4, fib5,
                  rio1, rio2, rio3, rio4, rio5]
-    #while len(questions) > 0:
-    #    questions = run_quiz(Dict, questions)
+    while len(questions) > 0:
+        questions = run_quiz(Dict, questions)
     AMOW.amow(Dict)
 
 def run_quiz(Dict, questions):
