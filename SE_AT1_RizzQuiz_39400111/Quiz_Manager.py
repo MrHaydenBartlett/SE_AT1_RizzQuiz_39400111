@@ -8,10 +8,10 @@ mc2 = ["MC", 1, "Which option applies to two's comp?", "- Sign", "- Significant 
 mc3 = ["MC", 1, "Which is the best option for storing decimals?", "Float", "Bool", "Int", "Char", 1]
 mc4 = ["MC", 1, "Which of the data structures is unordered?", "List", "Tuple", "Stacks", "Set", 4]
 mc5 = ["MC", 1, "Which isn't a debugging tool?", "Breakpoints", "Watches", "IDE Debug", "Half-Search", 4]
-mc6 = ["MC", 2, "Which error doesn't throw an error message?", "Syntax", "Import", "Logic", "Runtime", 2]
+mc6 = ["MC", 2, "Which error doesn't throw an error message?", "Syntax", "Import", "Logic", "Runtime", 3]
 mc7 = ["MC", 2, "Which of the following isn't hexadecimal?", "10", "3h", "ff", "a0", 2]
-mc8 = ["MC", 2, "Which is not a software development approach?", "Zip", "Waterfall", "Agile", "Rad", 2]
-mc9 = ["MC", 1, "Which data type can hold the largest number?", "Int", "Float", "Double", "Binary Tree", 2]
+mc8 = ["MC", 2, "Which is not a software development approach?", "Zip", "Waterfall", "Agile", "Rad", 1]
+mc9 = ["MC", 1, "Which data type can hold the largest number?", "Int", "Float", "Double", "Binary Tree", 3]
 mc10 = ["MC", 1, "Which is the correct value of this two's comp binary: 1100?", "192", "-192", "64", "-64", 4]
 # Fill in the Blank Questions
 # Type > Difficulty > Question > Answer

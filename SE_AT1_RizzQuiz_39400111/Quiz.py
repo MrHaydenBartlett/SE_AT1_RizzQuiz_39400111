@@ -20,30 +20,25 @@ efont = cnfg.Configs().efont
 ### ### Questions ### ###
 
 # Multiple Choice Questions #
-mc_q="Which option is B?"
-mc_op1="A"
-mc_op2="B"
-mc_op3="C"
-mc_op4="D"
-mc_a=2
 def mc_question(Dict, question):
     root, Frame = win.window()
 
     lblQuestion = tk.Label(Frame,
-    text=mc_q,
-    font=("Courier New", 24, BOLD),
+    text=question[2],
+    font=("Courier New", 16, BOLD),
     relief=tk.SUNKEN,
     bd=6,
     padx=10,
     pady=5,
     fg=tc,
-    bg=tbc
+    bg=tbc,
+    wraplength=550
     ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=25)
 
     radio_var = tk.IntVar()
     radio_var.set(1)
     rbtnOption1 = tk.Radiobutton(Frame,
-    text=mc_op1,
+    text=question[3],
     font=font,
     relief=tk.RAISED,
     bd=5,
@@ -58,7 +53,7 @@ def mc_question(Dict, question):
     ); rbtnOption1.grid(row=1, column=0, pady=5)
 
     rbtnOption2 = tk.Radiobutton(Frame,
-    text=mc_op2,
+    text=question[4],
     font=font,
     relief=tk.RAISED,
     bd=5,
@@ -73,7 +68,7 @@ def mc_question(Dict, question):
     ); rbtnOption2.grid(row=1, column=1, pady=5)
 
     rbtnOption3 = tk.Radiobutton(Frame,
-    text=mc_op3,
+    text=question[5],
     font=font,
     relief=tk.RAISED,
     bd=5,
@@ -88,7 +83,7 @@ def mc_question(Dict, question):
     ); rbtnOption3.grid(row=2, column=0, pady=5)
 
     rbtnOption4 = tk.Radiobutton(Frame,
-    text=mc_op4,
+    text=question[6],
     font=font,
     relief=tk.RAISED,
     bd=5,
@@ -117,7 +112,7 @@ def mc_question(Dict, question):
     ); btnSubmit.grid(row=3, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
-    text=str(Dict["Score"]//100) + "/30",
+    text=str(Dict["Score"]//100) + "/38",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
@@ -129,22 +124,22 @@ def mc_question(Dict, question):
 
     def mc_submit(radio_var):
         mark=""
-        if mc_a == radio_var.get():
-            Dict["Score"] += 100
+        if question[7] == radio_var.get():
+            Dict["Score"] += 100*question[1]
             mark="Correct!"
         else:
             mark="Incorrect!"
-        display_mark(mark)
+        display_mark(mark, Frame, root)
 
     root.mainloop()
 
 # Fill in the Blank Questions #
-fib_q="Charlton, do your ____!"
-fib_a="Clusters"
 def fib_question(Dict, question):
+    root, Frame = win.window()
+
     lblFIB = tk.Label(Frame,
     text="Fill in the Blank:",
-    font=("Courier New", 20, BOLD),
+    font=("Courier New", 18, BOLD),
     relief=tk.SUNKEN,
     bd=6,
     padx=10,
@@ -154,14 +149,15 @@ def fib_question(Dict, question):
     ); lblFIB.grid(row=0, column=0, columnspan=2, pady=25)
 
     lblQuestion = tk.Label(Frame,
-    text=fib_q,
-    font=("Courier New", 20, BOLD),
+    text=question[2],
+    font=("Courier New", 16, BOLD),
     relief=tk.SUNKEN,
     bd=6,
     padx=10,
     pady=5,
     fg=tc,
-    bg=tbc
+    bg=tbc,
+    wraplength=550
     ); lblQuestion.grid(row=1, column=0, columnspan=2, pady=10)
 
     string_var=tk.StringVar()
@@ -189,7 +185,7 @@ def fib_question(Dict, question):
     ); btnSubmit.grid(row=3, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
-    text=str(Dict["Score"]//100) + "/30",
+    text=str(Dict["Score"]//100) + "/38",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
@@ -201,28 +197,29 @@ def fib_question(Dict, question):
 
     def fib_submit(string_var):
         mark=""
-        if fib_a.upper() == string_var.get().upper():
-            Dict["Score"] += 100
+        if question[3].upper() == string_var.get().upper():
+            Dict["Score"] += 100*question[1]
             mark="Correct!"
         else:
             mark="Incorrect!"
-        display_mark(mark)
+        display_mark(mark, Frame, root)
+
+    root.mainloop()
 
 # Rank in Order Questions #
-rio_q="Rank in Order:"
-# Using a set for random order
-rio_ops={"One", "Two", "Three"}
-rio_a=["One", "Two", "Three"]
 def rio_question(Dict, question):
+    root, Frame = win.window()
+
     lblQuestion = tk.Label(Frame,
-    text=rio_q,
-    font=("Courier New", 24, BOLD),
+    text=question[2],
+    font=("Courier New", 16, BOLD),
     relief=tk.SUNKEN,
     bd=6,
     padx=10,
     pady=5,
     fg=tc,
-    bg=tbc
+    bg=tbc,
+    wraplength=550
     ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=10)
 
     lblOne = tk.Label(Frame,
@@ -240,7 +237,7 @@ def rio_question(Dict, question):
     cmbOp1 = ttk.Combobox(Frame,
     textvariable=string_var1,
     state="readonly",
-    values=list(rio_ops),
+    values=list(set(question[3])),
     font=font
     ); cmbOp1.grid(row=1, column=1)
 
@@ -259,7 +256,7 @@ def rio_question(Dict, question):
     cmbOp2 = ttk.Combobox(Frame,
     textvariable=string_var2,
     state="readonly",
-    values=list(rio_ops),
+    values=list(set(question[3])),
     font=font
     ); cmbOp2.grid(row=2, column=1)
 
@@ -278,7 +275,7 @@ def rio_question(Dict, question):
     cmbOp3 = ttk.Combobox(Frame,
     textvariable=string_var3,
     state="readonly",
-    values=list(rio_ops),
+    values=list(set(question[3])),
     font=font
     ); cmbOp3.grid(row=3, column=1)
 
@@ -297,7 +294,7 @@ def rio_question(Dict, question):
     ); btnSubmit.grid(row=4, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
-    text=str(Dict["Score"]//100) + "/30",
+    text=str(Dict["Score"]//100) + "/38",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
@@ -310,15 +307,17 @@ def rio_question(Dict, question):
     def rio_submit(var1, var2, var3):
         mark=""
         guess = [var1.get(), var2.get(), var3.get()]
-        if guess == rio_a:
-            Dict["Score"] += 100
+        if guess == question[3]:
+            Dict["Score"] += 100*question[1]
             mark="Correct!"
         else:
             mark="Incorrect!"
-        display_mark(mark)
+        display_mark(mark, Frame, root)
+
+    root.mainloop()
 
 # Displays the mark, adds a delay and moves to the next question
-def display_mark(mark):
+def display_mark(mark, Frame, root):
     lblMark = tk.Label(Frame,
     text=mark,
     font=font,
@@ -328,4 +327,21 @@ def display_mark(mark):
     pady=5,
     fg=tc,
     bg=tbc
-    ); lblMark.grid(row=5, column=0, columnspan=2)
+    ); lblMark.grid(row=5, column=0)
+
+    btnNext = tk.Button(Frame,
+    text="Next",
+    font=font,
+    relief=tk.RAISED,
+    bd=5,
+    padx=10,
+    pady=5,
+    fg=tc,
+    bg=tbc,
+    activeforeground=tbc,
+    activebackground=bgc,
+    command=lambda:btnnextcmd(root)
+    ); btnNext.grid(row=5, column=1)
+
+def btnnextcmd(root):
+    root.destroy()

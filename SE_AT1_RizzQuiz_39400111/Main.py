@@ -27,7 +27,6 @@ def main():
     Name_var=tk.StringVar()
     # Score is multiplied by 100 to prevent RAM manipulation
     Dict = {"Name": "", "SID":"", "Score":0, "Date":datetime.datetime.now()}
-    print(datetime.datetime.now())
 
     def main_menu():
         lblTitle = tk.Label(Frame,
