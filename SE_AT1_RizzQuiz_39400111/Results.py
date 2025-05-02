@@ -23,7 +23,7 @@ def results(Dict):
     root, Frame = win.window()
 
     lblScore = tk.Label(Frame,
-    text="You scored: " + str(Dict["Score"]//100) + "/38",
+    text="You scored: " + str(Dict["Score"]//100) + "/37",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
@@ -35,7 +35,7 @@ def results(Dict):
     ); lblScore.grid(row=0, column=0, pady=15, padx=10)
 
     lblScorePercent = tk.Label(Frame,
-    text=str(Dict["Score"]//38) + "%",
+    text=str(Dict["Score"]//37) + "%",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
@@ -95,7 +95,7 @@ def results(Dict):
 # Inputs Dict dictionary
 # Retuns grade in char form (could be string, but who knows its python)
 def grade(Dict):
-    percent = Dict["Score"]//38
+    percent = Dict["Score"]//37
     if percent == 100:
         return "J"
     elif percent > 80:

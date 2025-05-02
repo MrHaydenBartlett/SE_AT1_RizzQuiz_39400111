@@ -31,6 +31,6 @@ def window():
     bd=5,
     pady=15,
     padx=25
-    ); Frame.pack(pady=20)
+    ); Frame.pack(pady=15)
 
     return root, Frame

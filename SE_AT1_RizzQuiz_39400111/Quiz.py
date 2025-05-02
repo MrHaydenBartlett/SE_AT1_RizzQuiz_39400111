@@ -27,15 +27,16 @@ def mc_question(Dict, question):
 
     lblQuestion = tk.Label(Frame,
     text=question[2],
-    font=("Courier New", 16, BOLD),
+    font=("Courier New", 14, BOLD),
     relief=tk.SUNKEN,
     bd=6,
     padx=10,
     pady=5,
     fg=tc,
     bg=tbc,
-    wraplength=550
-    ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=25)
+    wraplength=550,
+    justify="left"
+    ); lblQuestion.grid(row=0, column=0, columnspan=2, pady=15)
 
     radio_var = tk.IntVar()
     radio_var.set(1)
@@ -114,7 +115,7 @@ def mc_question(Dict, question):
     ); btnSubmit.grid(row=3, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
-    text=str(Dict["Score"]//100) + "/38",
+    text=str(Dict["Score"]//100) + "/37",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
@@ -193,7 +194,7 @@ def fib_question(Dict, question):
     ); btnSubmit.grid(row=3, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
-    text=str(Dict["Score"]//100) + "/38",
+    text=str(Dict["Score"]//100) + "/37",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
@@ -308,7 +309,7 @@ def rio_question(Dict, question):
     ); btnSubmit.grid(row=4, column=0, pady=15)
 
     lblScore = tk.Label(Frame,
-    text=str(Dict["Score"]//100) + "/38",
+    text=str(Dict["Score"]//100) + "/37",
     font=font,
     relief=tk.SUNKEN,
     bd=6,
