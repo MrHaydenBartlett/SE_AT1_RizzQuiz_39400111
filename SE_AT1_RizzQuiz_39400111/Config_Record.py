@@ -10,7 +10,7 @@ class Configs:
         tbc="LightSalmon",
         ebg="Ivory",
         etc="gray4",
-        font=("Courier New", 18, BOLD),
+        font=("Courier New", 16, BOLD),
         efont=("Courier New", 14, BOLD)):
 
         self.bgc = bgc

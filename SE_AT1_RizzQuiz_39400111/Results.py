@@ -82,6 +82,7 @@ def results(Dict):
         command=lambda:retry(root)
     ); btnRetry.grid(row=2, column=1, pady=15, padx=10)
 
+    Dict["Score"] = Dict["Score"]//100
     rm.AddResults(Dict)
 
     root.mainloop()
