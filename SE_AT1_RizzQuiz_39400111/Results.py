@@ -15,6 +15,7 @@ etc = cnfg.Configs().etc
 font = cnfg.Configs().font
 efont = cnfg.Configs().efont
 
+# Displays the results page and runs the results manager module
 def results(Dict):
     root, Frame = win.window()
 
@@ -87,6 +88,7 @@ def results(Dict):
 
     root.mainloop()
 
+# Returns the grade based off of the score
 def grade(Dict):
     percent = Dict["Score"]//38
     if percent == 100:
@@ -102,9 +104,11 @@ def grade(Dict):
     else:
         return "N"
 
+# Quits the app
 def quit_app(root):
     root.destroy()
 
+# Restarts from the main menu
 def retry(root):
     root.destroy()
     Main.main()

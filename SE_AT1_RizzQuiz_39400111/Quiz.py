@@ -122,6 +122,7 @@ def mc_question(Dict, question):
     bg=tbc
     ); lblScore.grid(row=3, column=1)
 
+    # Displays the mark and adds score based on difficulty
     def mc_submit(radio_var, btnSubmit):
         mark=""
         if question[7] == radio_var.get():
@@ -195,6 +196,7 @@ def fib_question(Dict, question):
     bg=tbc
     ); lblScore.grid(row=3, column=1)
 
+    # Displays the mark and adds score based on difficulty
     def fib_submit(string_var, btnSubmit):
         mark=""
         if question[3].upper() == string_var.get().upper():
@@ -304,6 +306,7 @@ def rio_question(Dict, question):
     bg=tbc
     ); lblScore.grid(row=4, column=1)
 
+    # Marks the question and adds score based on difficulty
     def rio_submit(var1, var2, var3, btnSubmit):
         mark=""
         guess = [var1.get(), var2.get(), var3.get()]
@@ -316,7 +319,7 @@ def rio_question(Dict, question):
 
     root.mainloop()
 
-# Displays the mark, adds a delay and moves to the next question
+# Displays the mark, disables the submits buttons and allows the user to move to the next question
 def display_mark(mark, Frame, root, btnSubmit):
     lblMark = tk.Label(Frame,
     text=mark,
@@ -345,5 +348,6 @@ def display_mark(mark, Frame, root, btnSubmit):
 
     btnSubmit.config(state="disabled")
 
+# Closes the window which allows the next question to be displayed by the question manager module
 def btnnextcmd(root):
     root.destroy()

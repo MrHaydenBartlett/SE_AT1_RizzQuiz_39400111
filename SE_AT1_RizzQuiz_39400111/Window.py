@@ -14,8 +14,9 @@ etc = cnfg.Configs().etc
 font = cnfg.Configs().font
 efont = cnfg.Configs().efont
 
-# Root Creation & Customisation #
+# Creates a standardised window that can be executed easily from other modules
 def window():
+    # Root Creation & Customisation #
     root = tk.Tk()
     root.resizable(False,False)
     root.geometry("640x480")

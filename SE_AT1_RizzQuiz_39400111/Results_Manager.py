@@ -1,5 +1,6 @@
 filepath = "../Task1_Results.txt"
 
+# Adds the results to the above file, creates the file if it doesn't exist
 def AddResults(Dict):
     CreateFile(filepath)
     WriteToFile(Dict, filepath)

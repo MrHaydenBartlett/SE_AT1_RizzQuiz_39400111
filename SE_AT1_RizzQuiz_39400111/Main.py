@@ -19,6 +19,7 @@ etc = cnfg.Configs().etc
 font = cnfg.Configs().font
 efont = cnfg.Configs().efont
 
+# Displays the main menu, which stores the users name, SID, and time they started the quiz.
 def main():
     root, Frame = win.window()
 
@@ -148,5 +149,6 @@ def main():
 
     root.mainloop()
 
+# Only executes if the code is executed directly
 if __name__ == "__main__":
     main()

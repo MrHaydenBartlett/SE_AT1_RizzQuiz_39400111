@@ -29,6 +29,7 @@ rio3 = ["RIO", 2, "Rank in the order of reliability for help in programming for:
 rio4 = ["RIO", 1, "Rank the order in which these If statements would appear:", ["If", "Else If", "Else"]]
 rio5 = ["RIO", 3, "Rank the order of the sorting algorithms from most efficient to least:", ["Merge Sort", "Bubble Sort", "Bogo Sort"]]
 
+# Creates a list containing all the questions, displays the all, then runs the all my own work module
 def random_questions(Dict):
     questions = [mc1, mc2, mc3,mc4 , mc5, mc6, mc7, mc8, mc9, mc10,
                  fib1, fib2, fib3, fib4, fib5,
@@ -37,9 +38,13 @@ def random_questions(Dict):
         questions = run_quiz(Dict, questions)
     AMOW.amow(Dict)
 
+# Randomly selects and displays a question from the list, removes it and loops until all questions have been randomly shown
 def run_quiz(Dict, questions):
+    # Grabs a random item from the list
     sample = random.sample(questions, 1)
+    # The sample itself is a list so this undoes that
     question = sample[0]
+    # Displays the question based on its type
     match question[0]:
         case "MC":
             Quiz.mc_question(Dict, question)

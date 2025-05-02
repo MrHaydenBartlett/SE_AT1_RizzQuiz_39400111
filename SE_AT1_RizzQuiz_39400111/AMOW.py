@@ -14,6 +14,7 @@ etc = cnfg.Configs().etc
 font = cnfg.Configs().font
 efont = cnfg.Configs().efont
 
+# Displays the AMOW window
 def amow(Dict):
     root, Frame = win.window()
 
@@ -59,12 +60,14 @@ def amow(Dict):
 
     root.mainloop()
 
+# Allows the submit button to be clicked only if the user has agreed to the AMOW statement
 def enable_button(btnSubmit):
     if btnSubmit["state"] == "disabled":
         btnSubmit.config(state="normal")
     else:
         btnSubmit.config(state="disabled")
 
+# Closes window and runs the Results module
 def submit(Dict, root):
     root.destroy()
     Results.results(Dict)

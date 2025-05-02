@@ -1,7 +1,9 @@
 from tkinter.font import BOLD
 
+# A class to hold most of the theming settings so if a change in theme is required, it can be done easily in one place
 class Configs:
     def __init__(self,
+        # Sets the duefault value as the theming variables
         bgc="Salmon3",
         fgc="LightSalmon2", 
         abgc="Salmon",
