@@ -19,7 +19,9 @@ efont = cnfg.Configs().efont
 
 ### ### Questions ### ###
 
-# Multiple Choice Questions #
+# Multiple Choice Question #
+# Inputs user input via radio button, Dict dictionary, and question
+# Outputs Radio_var IntVar and btnSubmit (so it can be disabled) to mc_submit
 def mc_question(Dict, question):
     root, Frame = win.window()
 
@@ -123,6 +125,9 @@ def mc_question(Dict, question):
     ); lblScore.grid(row=3, column=1)
 
     # Displays the mark and adds score based on difficulty
+    # Score is multiplied by 100 to prevent RAM manipulation
+    # Inputs radio_var IntVar and btnSubmit
+    # Outputs mark string, Frame, root, and btnSubmit to display_mark function
     def mc_submit(radio_var, btnSubmit):
         mark=""
         if question[7] == radio_var.get():
@@ -134,7 +139,9 @@ def mc_question(Dict, question):
 
     root.mainloop()
 
-# Fill in the Blank Questions #
+# Fill in the Blank Question #
+# Inputs user input via entry, Dict dictionary, and question
+# Outputs string_var StringVar, and btnSubmit to fib_submit function
 def fib_question(Dict, question):
     root, Frame = win.window()
 
@@ -197,6 +204,9 @@ def fib_question(Dict, question):
     ); lblScore.grid(row=3, column=1)
 
     # Displays the mark and adds score based on difficulty
+    # Score is multiplied by 100 to prevent RAM manipulation
+    # Inputs string_var StringVar and btnSubmit
+    # Outputs mark string, Frame, root, and btnSubmit to display_mark function
     def fib_submit(string_var, btnSubmit):
         mark=""
         if question[3].upper() == string_var.get().upper():
@@ -209,6 +219,8 @@ def fib_question(Dict, question):
     root.mainloop()
 
 # Rank in Order Questions #
+# Inputs user input via three combo boxes, Dict dictionary, and question
+# Outputs string_var1, 2 and 3 StringVars and btnSubmit to rio_Submit function
 def rio_question(Dict, question):
     root, Frame = win.window()
 
@@ -307,6 +319,9 @@ def rio_question(Dict, question):
     ); lblScore.grid(row=4, column=1)
 
     # Marks the question and adds score based on difficulty
+    # Score is multiplied by 100 to prevent RAM manipulation
+    # Inputs var1, 2 and 3 StrngVars and btnSubmit
+    # Outputs mark string, Frame, root, and btnSubmit to display_mark function
     def rio_submit(var1, var2, var3, btnSubmit):
         mark=""
         guess = [var1.get(), var2.get(), var3.get()]
@@ -320,6 +335,8 @@ def rio_question(Dict, question):
     root.mainloop()
 
 # Displays the mark, disables the submits buttons and allows the user to move to the next question
+# Inputs mark string, Frame, root, and btnSubmit from each question
+# Outputs root to btnnextcmd, as well as disabling the submit button to prevent users from submitting multiple attempts
 def display_mark(mark, Frame, root, btnSubmit):
     lblMark = tk.Label(Frame,
     text=mark,
@@ -349,5 +366,7 @@ def display_mark(mark, Frame, root, btnSubmit):
     btnSubmit.config(state="disabled")
 
 # Closes the window which allows the next question to be displayed by the question manager module
+# Inputs root
+# Outputs closing the window
 def btnnextcmd(root):
     root.destroy()

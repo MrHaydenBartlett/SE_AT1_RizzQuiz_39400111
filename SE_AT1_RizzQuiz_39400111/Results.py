@@ -15,7 +15,10 @@ etc = cnfg.Configs().etc
 font = cnfg.Configs().font
 efont = cnfg.Configs().efont
 
-# Displays the results page and runs the results manager module
+# Displays the results page and adds the results to a txt file via the Results_Manager.AddResults function
+# Inputs Dict dictionary
+# Outputs Dict["Score"] dictionary item to user via label and outputs Dict dictionary to the Results_Manager.AddResults function
+# Outputs root to quit_app and retry functions
 def results(Dict):
     root, Frame = win.window()
 
@@ -83,12 +86,14 @@ def results(Dict):
         command=lambda:retry(root)
     ); btnRetry.grid(row=2, column=1, pady=15, padx=10)
 
-    Dict["Score"] = Dict["Score"]//100
     rm.AddResults(Dict)
 
     root.mainloop()
 
 # Returns the grade based off of the score
+# Grade is based off of the letters of my name (Jayden) where J is 100%, A is the second highest and N is the lowest
+# Inputs Dict dictionary
+# Retuns grade in char form (could be string, but who knows its python)
 def grade(Dict):
     percent = Dict["Score"]//38
     if percent == 100:
@@ -105,10 +110,14 @@ def grade(Dict):
         return "N"
 
 # Quits the app
+# Inputs root
+# Outputs closing window
 def quit_app(root):
     root.destroy()
 
 # Restarts from the main menu
+# Inputs root
+# Outputs by closing window and opening Main.main function
 def retry(root):
     root.destroy()
     Main.main()

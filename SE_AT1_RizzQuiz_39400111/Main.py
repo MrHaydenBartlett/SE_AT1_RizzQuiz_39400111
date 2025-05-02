@@ -19,7 +19,7 @@ etc = cnfg.Configs().etc
 font = cnfg.Configs().font
 efont = cnfg.Configs().efont
 
-# Displays the main menu, which stores the users name, SID, and time they started the quiz.
+# Displays the main menu, which stores a user inputted name and SID, as well as time they started the quiz in a dictionary
 def main():
     root, Frame = win.window()
 
@@ -27,8 +27,11 @@ def main():
     SID_var=tk.StringVar()
     Name_var=tk.StringVar()
     # Score is multiplied by 100 to prevent RAM manipulation
-    Dict = {"Name": "", "SID":"", "Score":0, "Date":datetime.datetime.now()}
+    Dict = {"Name": "", "SID":"", "Score":0, "Date":""}
 
+    # Displays the main menu
+    # Inputs the users name and SID
+    # Outputs the users name and SID into the Dict dictionary
     def main_menu():
         lblTitle = tk.Label(Frame,
         text="11 Software Engineering Test",
@@ -106,14 +109,23 @@ def main():
         bg=tbc
         ); lblStatus.grid(row=4, column=0, columnspan=2, pady=10)
 
-        # Handles the submit button click
+        # Checks the validity of the user inputted name and SID via their respective functions and if they are valid
+        # Starts the quiz via the start_quiz function
+        # Outputs the current date and time to the Dict dictionary
         def btnSubmitCMD():
             NameCheck = check_Name()
             SIDCheck = check_SID()
             if NameCheck and SIDCheck:
+                Dict["Date"] = str(datetime.datetime.now())
                 start_quiz()
 
         # Checks the validity of the inputted name
+        # Name length must be at least three characters
+            # This is done using the len() function
+        # Name must only contain letters, spaces and hyphens
+            # This is done by using regex
+        # Inputs the users name from the entry
+        # Outputs the users name to the Dict dictionary if the name is valid
         def check_Name():
             Name=Name_var.get().upper()
             if len(Name) < 3:
@@ -127,6 +139,10 @@ def main():
             return True
 
         # Checks the validity of the inputted SID
+        # SID must be numbers
+            # This is done by trying to convert it to an int
+        # SID must be 8 digits
+            # This is done using the len() function
         def check_SID():
             SID=SID_var.get()
             try:
@@ -142,7 +158,8 @@ def main():
             return True
     main_menu()
 
-    # Begins the quiz
+    # Begins the quiz by closing the root mainloop and running the Quiz_Manager module
+    # Outputs the Dict dictionary into Quiz_Manager.random_questions function
     def start_quiz():
         root.destroy()
         QuizMngr.random_questions(Dict)

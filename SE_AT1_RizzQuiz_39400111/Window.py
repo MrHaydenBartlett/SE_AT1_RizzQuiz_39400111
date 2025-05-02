@@ -15,6 +15,7 @@ font = cnfg.Configs().font
 efont = cnfg.Configs().efont
 
 # Creates a standardised window that can be executed easily from other modules
+# Returns root and Frame
 def window():
     # Root Creation & Customisation #
     root = tk.Tk()
